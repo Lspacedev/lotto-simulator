@@ -1,0 +1,54 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+/* {
+  border: 1px solid black;
+}*/
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+nav {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+nav p {
+  padding: 5px;
+  margin: 15px;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+}
+
+.boards-container {
+  display: flex;
+  gap: 5px;
+  padding: 15px;
+
+  border: 1px solid black;
+}
+
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid black;
+
+  width: 150px;
+}
+
+.board div {
+  flex: 25%;
+  box-sizing: border-box;
+  border: 1px solid black;
+}
