@@ -16,9 +16,8 @@ submit.addEventListener("click", (e) => {
 
 //generate boards based on number
 function generateBoards(num) {
-  //initialize tickets
-  sortTickets(num);
-  console.log(tickets);
+  //create array tickets
+  const tickets = createTickets(num);
   //select boards container
   const boards = document.querySelector(".boards-container");
 
@@ -27,60 +26,73 @@ function generateBoards(num) {
     boards.firstChild.remove();
   }
 
-  for (let i = 0; i < num; i++) {
-    const board = document.createElement("div");
-    board.classList.add("board");
+  /*
+    [
+      { ticketId: 1, boards: [
+          {
+            boardId: 1,
+            numbers: [],
+          }
+       ] }
+    ]
+  */
+  tickets.forEach((ticket) => {
+    const ticketId = ticket.ticketId;
+    const boardsArr = ticket.boards;
+    boardsArr.forEach((boardObj) => {
+      //get board id
+      const boardId = boardObj.boardId;
 
-    //create board id
-    const id = i + 1;
-    board.setAttribute("id", `${id}`);
+      const board = document.createElement("div");
+      board.classList.add("board");
 
-    for (let i = 0; i < 52; i++) {
-      const boardBlock = document.createElement("div");
-      boardBlock.innerText = i + 1;
-      board.appendChild(boardBlock);
-    }
+      board.setAttribute("id", `${boardId}`);
 
-    boards.appendChild(board);
-  }
+      for (let i = 0; i < 52; i++) {
+        const boardBlock = document.createElement("div");
+        boardBlock.innerText = i + 1;
+        board.appendChild(boardBlock);
+      }
+
+      boards.appendChild(board);
+    });
+  });
 }
 
 //create function to associate or sort number of boards with tickets
-function sortTickets(num) {
-  let ticketNum;
-  if (num % 10 == 0) {
-    ticketNum = num / 10;
-  } else {
-    //store modulus
-    let modulus = num % 10;
-    ticketNum = num - modulus;
-    ticketNum /= 10;
-    ticketNum += 1;
-  }
-  console.log(ticketNum);
-  //initialize tickets
-  for (let i = 0; i < ticketNum; i++) {
-    tickets.push({
-      ticketId: i + 1,
-      boards: [
-        {
-          boardId: 0,
-          numbers: [],
-        },
-      ],
-    });
-  }
-  console.log(tickets);
-}
-//user must be able to select
-/*{ 
-    ticketId: id, 
-    boards: [
-    {
-        boardId: 1, 
-        numbers: []
+
+function createTickets(num) {
+  let arr = [];
+  let modulus = num % 10;
+  ticketNum = num - modulus;
+  ticketNum /= 10;
+  for (let i = 1; i <= ticketNum; i++) {
+    let end = i * 10;
+    let start = end - 10;
+    start += 1;
+    let boards = [];
+    for (start; start <= end; start++) {
+      boards.push({
+        boardId: start,
+        numbers: [],
+      });
     }
-    ] 
-} */
-console.log("hello");
-sortTickets(31);
+    arr.push({ ticketId: i, boards: boards });
+  }
+  if (modulus !== 0) {
+    //store modulus
+    let start = num - modulus;
+    start = start + 1;
+
+    let boards = [];
+    let length = arr.length;
+    for (start; start <= num; start++) {
+      boards.push({
+        boardId: start,
+        numbers: [],
+      });
+    }
+    arr.push({ ticketId: length + 1, boards: boards });
+  }
+  return arr;
+}
