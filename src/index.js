@@ -13,12 +13,13 @@ submit.addEventListener("click", (e) => {
 
   //create array tickets, which contains each ticket with its associated boards.
   const tickets = createTickets(userNum);
+  console.log(tickets);
 
   //render user boards
   generateBoards(tickets);
 
   //with boards rendered get board selections
-  getBoardSelections();
+  getBoardSelections(tickets);
 });
 
 //generate boards based on number
@@ -120,12 +121,20 @@ function createTickets(num) {
   return arr;
 }
 
-function getBoardSelections(arr) {
+function getBoardSelections(tickets) {
   //select all blocks/number divs
   const boardBlocks = document.querySelectorAll(".board-block");
   console.dir(boardBlocks);
+
   boardBlocks.forEach((boardBlock) => {
     boardBlock.addEventListener("click", (e) => {
+      //create arr to store selections
+
+      //if 6 selected prevent click
+      /* if (arr.length > 6) {
+        return;
+      }*/
+
       //select parent div / board
       const board = boardBlock.parentElement;
 
@@ -135,7 +144,34 @@ function getBoardSelections(arr) {
 
       //get number from div
       const number = parseInt(e.target.innerText);
-      console.log(ticketId, boardId, number);
+
+      //loop through board's numbers array to see if
+
+      //push selected into board's numbers array
+
+      tickets.map((ticket) => {
+        if (ticket.ticketId === ticketId) {
+          ticket.boards.map((board) => {
+            if (board.boardId === boardId) {
+              //prevent more than 6 numbers being added
+              if (board.numbers.length > 5) {
+                return;
+              }
+              //prevent same number from being added
+              if (board.numbers.indexOf(number) === -1) {
+                return board.numbers.push(number);
+              }
+            } else {
+              return board;
+            }
+          });
+        } else {
+          return ticket;
+        }
+      });
+      console.log(tickets);
+
+      //console.log(ticketId, boardId, number);
     });
   });
 }
