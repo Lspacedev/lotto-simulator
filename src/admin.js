@@ -14,9 +14,9 @@ export function admin(tickets) {
     return arr;
   }
   const drawBtn1 = document.querySelector(".draw-btn1");
-  let winningNumbers1;
+  let winningResults1;
   drawBtn1.addEventListener("click", () => {
-    winningNumbers1 = generateWinningNumbers(1, 52);
-    console.log(winningNumbers1);
+    winningResults1 = generateWinningNumbers(1, 52);
   });
+  console.log(winningResults1);
 }

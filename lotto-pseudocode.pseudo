@@ -1,24 +1,24 @@
-Pseudocode for Lotto simulator
- Input: Number of boards user chose.
- Output: Result of draw.
- LOTTO SIMULATOR:
- START 
-    1. GET USER INPUT.
-    2. PASS INPUT INTO CREATEBOARDS FUNCTION.
-    3.CREATE TICKETS ARRAY THAT KEEPS TRACK OF BOARDS PER 
-    TICKETS.
-    4.USE TICKETS ARRAY TO RENDER BOARDS ON PAGE.
-    5.ON CLICK OF BLOCKS/NUMBERS IN BOARD, UPDATE TICKETS 
-    ARRAY WITH SELECTED NUMBERS.
-    6. CREATE DRAW FUNCTION AND PASS TICKETS ARRAY AS 
-    PARAMETER.
-    7. IN DRAW FUNCTION CREATE RANDOM WINNING NUMBERS.
-    8.COMPARE WINNING NUMBERS WITH THE SELECTED NUMBERS 
-    FROM TICKETS ARRAY.
-    9.IF WIN CONDITION IS MET:
-        RETURN MESSAGE "YOU WIN".
-    ELSE:
-        RETURN MESSAGE "YOU LOSE".
-    IF PLAYER CHOOSES TO PLAY LOTTO PLUS 1 AND 2:
-        START AGAIN FROM STEP 7.
+Pseudocode
+ LOTTO SIMULATOR(input: userInput);
+ START:
+    1. Create createBoards function.
+    2. createBoards(userInput):
+        1. Create ticketsArray to store and track ticket objects
+        2. Loop through ticketsArray and create board divs to page
+    5. Add event listener on numbers in boards:
+        1. Update ticketsArray board objects with selected numbers.
+    
+    6. Admin:
+        1. Create draw function.
+        2. draw(ticketsArray):
+            winningNumbers = randomNumberGenerator.
+        3. Compare numbers in ticketsArray and winningNumbers.
+            1. Create countArr to track matches.
+  
+        4. IF countArr.lengh > 3:
+            return "You win"
+        ELSE:
+          return "You lose"
+        IF player chooses to play lotto plus 1 and 2:
+            START AGAIN from STEP 7.
 END
