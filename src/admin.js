@@ -17,7 +17,6 @@ export function admin(tickets) {
   let winningNumbers1;
   drawBtn1.addEventListener("click", () => {
     winningNumbers1 = generateWinningNumbers(1, 52);
-    return winningNumbers1;
+    console.log(winningNumbers1);
   });
-  console.log(winningNumbers1);
 }
