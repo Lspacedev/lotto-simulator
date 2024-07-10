@@ -6,29 +6,26 @@ body {
 /* {
   border: 1px solid black;
 }*/
-
 .container {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 
   align-items: center;
 }
 
-nav {
-  width: 100vw;
+.nav {
+  height: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
-nav p {
-  padding: 5px;
-  margin: 15px;
-}
-
-nav a {
-  text-decoration: none;
-  color: black;
+.nav button {
+  padding: 25px 50px;
+  margin: 10px;
+  border: none;
 }
 
 .boards-container {
@@ -36,6 +33,12 @@ nav a {
   flex-wrap: wrap;
   gap: 5px;
   padding: 15px;
+
+  width: 700px;
+  height: 450px;
+
+  overflow-x: hidden;
+  overflow-y: auto;
 
   border: 1px solid black;
 }
@@ -46,6 +49,7 @@ nav a {
   border: 1px solid black;
 
   width: 150px;
+  height: 300px;
 }
 
 .board div {
@@ -56,4 +60,19 @@ nav a {
 
 .selected {
   background-color: red;
+}
+
+.boards-container {
+  display: flex;
+
+  justify-content: center;
+}
+
+.boards-div {
+  border: 1px solid black;
+}
+
+.playDiv {
+  display: flex;
+  justify-content: center;
 }

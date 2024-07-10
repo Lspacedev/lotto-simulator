@@ -3,6 +3,7 @@
 export function user() {
   //generate boards based on number
   function generateBoards(tickets) {
+    const boardsDiv = document.querySelector(".boards-div");
     //select boards container
     const boards = document.querySelector(".boards-container");
 
@@ -10,11 +11,34 @@ export function user() {
     while (boards.firstChild) {
       boards.firstChild.remove();
     }
+    //play container div
+    const playDiv = document.createElement("div");
+    playDiv.classList.add("playDiv");
+
+    //lotto plus divs
+    const lottoPlus1 = document.createElement("div");
+    lottoPlus1.classList.add("lotto-plus1");
+    lottoPlus1.innerHTML = `<label for="lp1">Lotto Plus 1
+    <input type="checkbox" id="lp1">
+    </label>`;
+
+    const lottoPlus2 = document.createElement("div");
+    lottoPlus2.classList.add("lotto-plus2");
+    lottoPlus2.innerHTML = `<label for="lp2">Lotto Plus 2
+    <input type="checkbox" id="lp2">
+    </label>`;
+
     //create play button
     const playBtn = document.createElement("button");
+    playBtn.classList.add("playBtn");
     playBtn.innerText = "Play";
 
-    boards.appendChild(playBtn);
+    playDiv.appendChild(lottoPlus1);
+    playDiv.appendChild(lottoPlus2);
+    playDiv.appendChild(playBtn);
+
+    boardsDiv.appendChild(playDiv);
+
     //loop through tickets array
     tickets.forEach((ticket) => {
       //get ticket id
@@ -79,7 +103,7 @@ export function user() {
         });
       }
       //push ticket object with the boards
-      arr.push({ ticketId: i, boards: boards });
+      arr.push({ ticketId: i, boards: boards, price: boards.length * 5 });
     }
 
     //if modulus is not equal to 0, add 1 more ticket
@@ -100,7 +124,11 @@ export function user() {
           numbers: [],
         });
       }
-      arr.push({ ticketId: lastTicketId, boards: boards });
+      arr.push({
+        ticketId: lastTicketId,
+        boards: boards,
+        price: boards.length * 5,
+      });
     }
     return arr;
   }
@@ -151,28 +179,30 @@ export function user() {
       });
     });
   }
-  /*
-function admin(tickets) {
-  //random number generator
-  function generateWinningNumbers(min, max) {
-    let arr = [];
-    while (arr.length < 6) {
-      let num = Math.floor(Math.random() * (max - min + 1)) + min;
-      if (arr.indexOf(num) === -1) {
-        arr.push(num);
-      }
-    }
-
-    return arr;
+  function totalPrice(tickets) {
+    let totalPrice = 0;
+    tickets.map((ticket) => {
+      const price = ticket.price;
+      totalPrice += price;
+    });
+    return totalPrice;
   }
-  const drawBtn1 = document.querySelector(".draw-btn1");
-  let winningNumbers1;
-  drawBtn1.addEventListener("click", () => {
-    winningNumbers1 = generateWinningNumbers(1, 52);
-    return winningNumbers1;
-  });
-  console.log(winningNumbers1);
-}
-*/
-  return { generateBoards, createTickets, getBoardSelections };
+
+  function checkSelections(tickets) {
+    let count = 0;
+    tickets.map((ticket) => {
+      const boards = ticket.boards;
+      boards.map((board) => {
+        count += board.numbers.length;
+      });
+    });
+    return count;
+  }
+  return {
+    generateBoards,
+    createTickets,
+    getBoardSelections,
+    totalPrice,
+    checkSelections,
+  };
 }
