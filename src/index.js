@@ -17,13 +17,34 @@ const container = document.querySelector(".container");
 nav.appendChild(userBtn);
 nav.appendChild(adminBtn);
 
+//create array for storing ticket object
+let tickets = [];
 userBtn.addEventListener("click", () => {
   render("user");
-  user();
+
+  //get user input
+  const input = document.querySelector("#input-number");
+  const submit = document.querySelector("#input-submit");
+  let userNum = 0;
+
+  submit.addEventListener("click", (e) => {
+    e.preventDefault();
+    userNum = parseInt(input.value);
+    input.value = "";
+
+    //create array tickets, which contains each ticket with its associated boards.
+    tickets = user().createTickets(userNum);
+
+    //render user boards
+    user().generateBoards(tickets);
+
+    //with boards rendered get board selections
+    user().getBoardSelections(tickets);
+  });
 });
 adminBtn.addEventListener("click", () => {
   render("admin");
-  admin();
+  admin(tickets);
 });
 
 function render(user) {
@@ -35,6 +56,7 @@ function render(user) {
                 <input type="submit" id="input-submit" value="submit">
             </div>
             <div class="boards-container">
+            
             </div>
         </section>`;
   } else if (user === "admin") {

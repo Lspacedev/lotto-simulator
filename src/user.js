@@ -1,29 +1,6 @@
 //import { admin } from "./admin.js";
 
 export function user() {
-  //get user input
-  const input = document.querySelector("#input-number");
-  const submit = document.querySelector("#input-submit");
-  let userNum = 0;
-
-  //create array for storing ticket object
-
-  let tickets;
-  submit.addEventListener("click", (e) => {
-    e.preventDefault();
-    userNum = parseInt(input.value);
-    input.value = "";
-
-    //create array tickets, which contains each ticket with its associated boards.
-    tickets = createTickets(userNum);
-
-    //render user boards
-    generateBoards(tickets);
-
-    //with boards rendered get board selections
-    getBoardSelections(tickets);
-  });
-
   //generate boards based on number
   function generateBoards(tickets) {
     //select boards container
@@ -33,6 +10,11 @@ export function user() {
     while (boards.firstChild) {
       boards.firstChild.remove();
     }
+    //create play button
+    const playBtn = document.createElement("button");
+    playBtn.innerText = "Play";
+
+    boards.appendChild(playBtn);
     //loop through tickets array
     tickets.forEach((ticket) => {
       //get ticket id
@@ -192,4 +174,5 @@ function admin(tickets) {
   console.log(winningNumbers1);
 }
 */
+  return { generateBoards, createTickets, getBoardSelections };
 }
