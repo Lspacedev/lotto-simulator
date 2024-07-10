@@ -88,11 +88,14 @@ userBtn.addEventListener("click", () => {
           confirmBtn.addEventListener("click", () => {
             alert("OK");
             if (lotto_plus1) {
-              totalPrice += 2.5;
+              let boardsNumber = user().getBoardsNumber(tickets);
+              totalPrice += 2.5 * boardsNumber;
               priceDiv.innerText = `Total Price: ${totalPrice}`;
             }
             if (lotto_plus2) {
-              totalPrice += 2.5;
+              let boardsNumber = user().getBoardsNumber(tickets);
+              totalPrice += 2.5 * boardsNumber;
+
               priceDiv.innerText = `Total Price: ${totalPrice}`;
             }
           });

@@ -198,11 +198,21 @@ export function user() {
     });
     return count;
   }
+
+  function getBoardsNumber(tickets) {
+    let count = 0;
+    tickets.map((ticket) => {
+      const boards = ticket.boards;
+      count += boards.length;
+    });
+    return count;
+  }
   return {
     generateBoards,
     createTickets,
     getBoardSelections,
     totalPrice,
     checkSelections,
+    getBoardsNumber,
   };
 }

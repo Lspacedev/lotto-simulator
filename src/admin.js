@@ -63,6 +63,8 @@ export function admin(tickets, lotto_plus1, lotto_plus2) {
     let winningResults1 = drawNumbers(1, 52);
     //append winning balls
     const lottoResultsDiv = document.querySelector(".lotto-draw-results");
+    const ballsDiv = document.createElement("div");
+    ballsDiv.classList.add("balls-div");
     winningResults1.forEach((number) => {
       const ball = document.createElement("div");
       ball.classList.add("ball");
@@ -77,8 +79,9 @@ export function admin(tickets, lotto_plus1, lotto_plus2) {
       } else if (number >= 38 && number <= 52) {
         ball.classList.add("blue");
       }
-      lottoResultsDiv.appendChild(ball);
+      ballsDiv.appendChild(ball);
     });
+    lottoResultsDiv.appendChild(ballsDiv);
     tickets.map((ticket) => {
       const boards = ticket.boards;
       console.log(ticket);
