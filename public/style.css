@@ -76,3 +76,38 @@ body {
   display: flex;
   justify-content: center;
 }
+
+.boards {
+  text-align: center;
+}
+
+.boards-heading {
+  margin: 25px;
+}
+
+.boards-selector {
+  margin: 25px;
+}
+
+.lotto-heading {
+  font-size: 2.5rem;
+  margin: 5px;
+}
+
+.lotto-draw {
+  text-align: center;
+}
+
+.lotto-draw-heading {
+  margin: 45px;
+}
+
+.lotto-draw-btns {
+  margin: 45px;
+}
+
+.lotto-draw-btns button {
+  padding: 15px 32px;
+  margin: 10px;
+  border: none;
+}

@@ -14,18 +14,20 @@ export function admin(tickets, lotto_plus1, lotto_plus2) {
     return arr;
   }
   //Lotto
-  let clicked1 = false;
-  const drawBtn = document.querySelector(".draw-btn");
-  drawBtn.innerText = `Draw Lotto`;
-  drawBtn.addEventListener("click", () => {
-    if (clicked1) {
-      return;
-    }
-    lotto(tickets, "Lotto");
 
-    clicked1 = true;
-  });
+  if (tickets.length !== 0) {
+    let clicked1 = false;
+    const drawBtn = document.querySelector(".draw-btn");
+    drawBtn.innerText = `Draw Lotto`;
+    drawBtn.addEventListener("click", () => {
+      if (clicked1) {
+        return;
+      }
+      lotto(tickets, "Lotto");
 
+      clicked1 = true;
+    });
+  }
   if (lotto_plus1) {
     //Lotto Plus 1
     let clicked2 = false;
@@ -59,6 +61,24 @@ export function admin(tickets, lotto_plus1, lotto_plus2) {
     let results = [];
 
     let winningResults1 = drawNumbers(1, 52);
+    //append winning balls
+    const lottoResultsDiv = document.querySelector(".lotto-draw-results");
+    winningResults1.forEach((number) => {
+      const ball = document.createElement("div");
+      ball.classList.add("ball");
+      ball.innerText = number;
+
+      if (number >= 1 && number <= 13) {
+        ball.classList.add("red");
+      } else if (number >= 14 && number <= 25) {
+        ball.classList.add("yellow");
+      } else if (number >= 26 && number <= 37) {
+        ball.classList.add("green");
+      } else if (number >= 38 && number <= 52) {
+        ball.classList.add("blue");
+      }
+      lottoResultsDiv.appendChild(ball);
+    });
     tickets.map((ticket) => {
       const boards = ticket.boards;
       console.log(ticket);
@@ -93,8 +113,4 @@ export function admin(tickets, lotto_plus1, lotto_plus2) {
       alert(`${lottoName} Results: You lost`);
     }
   }
-  /*
-  lotto(tickets, "Lotto");
-  lotto(tickets, "Lotto Plus 1");
-  lotto(tickets, "Lotto Plus 2");*/
 }

@@ -113,6 +113,7 @@ adminBtn.addEventListener("click", () => {
 function render(user) {
   if (user === "user") {
     container.innerHTML = `<section class="boards">
+            <div class="lotto-heading">Lotto Simulator</div>
             <div class="boards-heading">Select your boards.</div>
             <div class="boards-selector">
                 <input type="text" id="input-number" placeholder="Enter board number">
@@ -129,6 +130,7 @@ function render(user) {
     container.appendChild(nav);
   } else if (user === "admin") {
     container.innerHTML = `     <section class="lotto-draw">
+          <div class="lotto-heading">Lotto Simulator</div>
           <div class="lotto-draw-heading">Run Lotto Draw</div>
           <div class="lotto-draw-btns">
               <button class="draw-btn">Draw</button>
