@@ -27,6 +27,29 @@ navBtns.appendChild(adminBtn);
 nav.appendChild(navBtns);
 
 body.prepend(nav);
+container.innerHTML = `    
+<div class="welcome-lotto">Welcome to Lotto Simulator</div>
+<div class="lotto-info">
+      
+      <div class="lotto-info-heading">How to play lotto ?</div>
+      <div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis
+        nihil fugiat ipsum temporibus inventore blanditiis ab animi veritatis,
+        reprehenderit necessitatibus exercitationem sequi quod possimus impedit
+        quidem repudiandae. Nam, molestias aut.
+      </div>
+      <div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis
+        nihil fugiat ipsum temporibus inventore blanditiis ab animi veritatis,
+        reprehenderit necessitatibus exercitationem sequi quod possimus impedit
+        quidem repudiandae. Nam, molestias aut.
+      </div>
+      <div class="lotto-types">
+        <div class="lotto-icon">Lotto</div>
+        <div class="lotto-plus1-icon">Lotto Plus 1</div>
+        <div class="lotto-plus2-icon">Lotto Plus 2</div>
+      </div>
+    </div>`;
 
 //create array for storing ticket object
 let tickets = [];
