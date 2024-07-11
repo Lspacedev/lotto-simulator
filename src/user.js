@@ -1,6 +1,36 @@
 //import { admin } from "./admin.js";
 
 export function user() {
+  //generate tickets on page
+  function generateTickets(tickets) {
+    const aside = document.querySelector(".aside");
+
+    while (aside.firstChild) {
+      aside.firstChild.remove();
+    }
+    //append tickets to ticket history
+    tickets.map((ticket) => {
+      const ticketDiv = document.createElement("div");
+      ticketDiv.classList.add("ticket-div");
+
+      const ticketId = ticket.ticketId;
+      const boardsNumber = ticket.boards.length;
+      const ticketDate = new Date().toISOString().split("T")[0];
+
+      const ticketIdDiv = document.createElement("div");
+      const boardsNumberDiv = document.createElement("div");
+      const dateDiv = document.createElement("div");
+
+      ticketIdDiv.innerHTML = `ticketId: ${ticketId}`;
+      boardsNumberDiv.innerText = `boards: ${boardsNumber}`;
+      dateDiv.innerText = `date: ${ticketDate}`;
+
+      ticketDiv.appendChild(ticketIdDiv);
+      ticketDiv.appendChild(boardsNumberDiv);
+      ticketDiv.appendChild(dateDiv);
+      aside.appendChild(ticketDiv);
+    });
+  }
   //generate boards based on number
   function generateBoards(tickets) {
     const boardsDiv = document.querySelector(".boards-div");
@@ -140,7 +170,6 @@ export function user() {
   function getBoardSelections(tickets) {
     //select all blocks/number divs
     const boardBlocks = document.querySelectorAll(".board-block");
-    console.dir(boardBlocks);
 
     boardBlocks.forEach((boardBlock) => {
       boardBlock.addEventListener("click", (e) => {
@@ -152,7 +181,7 @@ export function user() {
         const boardId = parseInt(board.id);
 
         //get number from div
-        const number = parseInt(e.target.innerText);
+        const number = parseInt(e.currentTarget.innerText);
 
         //loop through board's numbers array to see if
 
@@ -170,6 +199,7 @@ export function user() {
                 if (board.numbers.indexOf(number) === -1) {
                   //add selected class to boardBlock
                   boardBlock.classList.add("selected");
+                  console.log(boardBlock);
                   return board.numbers.push(number);
                 }
               } else {
@@ -180,6 +210,7 @@ export function user() {
             return ticket;
           }
         });
+        console.dir(boardBlocks, "jd");
       });
     });
   }
@@ -212,6 +243,7 @@ export function user() {
     return count;
   }
   return {
+    generateTickets,
     generateBoards,
     createTickets,
     getBoardSelections,

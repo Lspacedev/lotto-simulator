@@ -1,22 +1,30 @@
 body {
   padding: 0;
   margin: 0;
-}
 
+}
 /* {
   border: 1px solid black;
 }*/
 .container {
   height: 100vh;
+  background-color: rgb(211, 211, 211);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center
+  
+
+ 
 }
 
 .nav {
+  height: 10%;
   display: flex;
   justify-content: space-around;
+
+  margin-bottom: 5px;
+
 }
 
 .nav-btns {
@@ -29,22 +37,58 @@ body {
   padding: 14px 28px;
   margin: 15px;
   border: none;
+ 
 }
 
 .boards {
+  display: flex;
+  gap: 5px;
+  width: 100%;
   height: 100%;
-  width: 50%;
-  margin: auto;
+  padding: 0px 50px;
+
+ 
+}
+
+aside {
+  flex-grow: 1;
+ 
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  
+}
+
+.aside, .winnings-aside {
+  width: 220px;
+  min-height: 50vh;
+  padding: 15px;
+  background-color: white;
+
+ 
+
+  
+}
+
+.boards-main {
+  flex-grow: 4;
+  background-color: white;
+  padding: 0px 25px;
+  margin-top: 10px;
+
   text-align: center;
+
 }
 
 .boards-container {
+ 
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 5px;
 
-  height: 500px;
+  height: 450px;
 
   overflow-x: hidden;
   overflow-y: auto;
@@ -52,26 +96,31 @@ body {
   background-color: #eeeeee;
 
   box-shadow: 2px 2px 5px rgb(192, 192, 192) inset;
+
+  
 }
 
 .board {
   display: flex;
   flex-wrap: wrap;
-  border: 1px solid black;
+  border: 1px solid rgb(255, 92, 92);
+  background-color: white;
 
   width: 150px;
-  height: 300px;
+  height: 315px;
 }
-
-.board div {
-  flex: 25%;
-  box-sizing: border-box;
-  border: 1px solid black;
-}
-
 .selected {
   background-color: red;
 }
+.board div {
+  flex: 18%;
+  box-sizing: border-box;
+  border: 1px solid rgb(255, 92, 92);
+  margin: 2px;
+  
+}
+
+
 
 .playDiv {
   display: flex;
@@ -84,26 +133,48 @@ body {
 }
 
 .boards-selector {
-  margin: 25px;
+  margin: 15px;
 }
 .boards-selector input[type="text"] {
   padding: 10px 30px;
 }
 
 .boards-selector input[type="submit"] {
-  padding: 10px 20px;
+  padding: 12px 20px;
+  background-color: rgb(149, 139, 20);
+  border: none;
+  color: white;
 }
 
 .lotto-heading {
-  font-size: 2.5rem;
+  font-size: 2rem;
+  font-family: 'Courier New', Courier, monospace;
   display: flex;
   align-items: center;
 }
 
 .lotto-draw {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   text-align: center;
+  border: 1px solid black;
+  display: flex;
+  gap: 15px;
+}
+
+.admin-win-aside, .admin-draw-aside {
+  flex-grow: 1;
+  width: 220px;
+  min-height: 50vh;
+  padding: 15px;
+  background-color: white;
+
+}
+
+.admin-main {
+  flex-grow: 4;
+  background-color: white;
+  margin-top: 10px;
 }
 
 .lotto-draw-heading {
@@ -164,9 +235,12 @@ body {
 }
 
 form {
+
   border: 3px solid #f1f1f1;
   padding: 50px;
   width: 35%;
+  background-color: white;
+  
 }
 
 form input[type="text"],
@@ -180,7 +254,7 @@ input[type="password"] {
 }
 
 form input[type="submit"] {
-  background-color: gray;
+  background-color: rgb(149, 139, 20);
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -192,7 +266,9 @@ form input[type="submit"] {
 .lotto-info {
   font-size: 1.5rem;
   width: 50%;
-  margin: 0 auto;
+  height: 100%;
+  margin: 10px auto;
+  background-color: white;
 }
 
 .lotto-info div {
@@ -205,21 +281,40 @@ form input[type="submit"] {
 }
 .lotto-info-heading {
   font-size: 2rem;
+  background-color: rgb(252, 239, 47);
+  margin: 0;
+  padding: 25px;
 }
 
 .lotto-types {
   display: flex;
   justify-content: space-evenly;
-  padding: 50px;
 }
 
-.lotto-types div {
-  padding: 25px;
-  border: 1px solid black;
-  border-radius: 5%;
+.lotto-types div img{
+  width: 150px;
 }
 
-.aside {
-  border: 1px solid black;
-  padding: 50px;
+
+.ticket-div {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 5px;
+
+  margin: 5px;
+  padding: 15px;
+
+  border-bottom: 1px solid gray;
+  background-color: white;
+ 
+}
+
+.numbers-div {
+  display: flex;
+  justify-content: center;
+
+}
+
+.num-div {
+  padding: 5px;
 }
