@@ -6,14 +6,18 @@ export function user() {
     const boardsDiv = document.querySelector(".boards-div");
     //select boards container
     const boards = document.querySelector(".boards-container");
+    //play container div
+    const playDiv = document.querySelector(".playDiv");
 
     //if boards div is not empty, clear its children
     while (boards.firstChild) {
       boards.firstChild.remove();
     }
-    //play container div
-    const playDiv = document.createElement("div");
-    playDiv.classList.add("playDiv");
+
+    //if boards div is not empty, clear its children
+    while (playDiv.firstChild) {
+      playDiv.firstChild.remove();
+    }
 
     //lotto plus divs
     const lottoPlus1 = document.createElement("div");

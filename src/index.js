@@ -27,9 +27,7 @@ navBtns.appendChild(adminBtn);
 nav.appendChild(navBtns);
 
 body.prepend(nav);
-container.innerHTML = `    
-<div class="welcome-lotto">Welcome to Lotto Simulator</div>
-<div class="lotto-info">
+container.innerHTML = `    <div class="lotto-info">
       
       <div class="lotto-info-heading">How to play lotto ?</div>
       <div>
@@ -163,10 +161,12 @@ function render(user) {
               <div class="boards-container">
             
               </div>
+              <div class="playDiv"></div>
             </div>
           
-            <div class="price">Total Price: </price>
-        </section>`;
+            <div class="price">Total Price: 0</price>
+        </section>
+        <div class="aside"></div>`;
   } else if (user === "admin") {
     container.innerHTML = `     <section class="lotto-draw">
           <div class="lotto-draw-heading">Run Lotto Draw</div>
