@@ -13,9 +13,20 @@ adminBtn.innerText = "Admin";
 //select nav and container
 const nav = document.querySelector(".nav");
 const container = document.querySelector(".container");
+const body = document.querySelector("body");
+const lottoHeading = document.createElement("div");
+lottoHeading.classList.add("lotto-heading");
+lottoHeading.innerText = "Lotto Simulator";
 
-nav.appendChild(userBtn);
-nav.appendChild(adminBtn);
+const navBtns = document.createElement("div");
+navBtns.classList.add("nav-btns");
+
+nav.prepend(lottoHeading);
+navBtns.appendChild(userBtn);
+navBtns.appendChild(adminBtn);
+nav.appendChild(navBtns);
+
+body.prepend(nav);
 
 //create array for storing ticket object
 let tickets = [];
@@ -84,8 +95,11 @@ userBtn.addEventListener("click", () => {
           confirmBtn.classList.add("confirm");
           confirmBtn.innerText = "confirm";
           playDiv.appendChild(confirmBtn);
-
+          let confirmed = false;
           confirmBtn.addEventListener("click", () => {
+            if (confirmed) {
+              return;
+            }
             alert("OK");
             if (lotto_plus1) {
               let boardsNumber = user().getBoardsNumber(tickets);
@@ -98,6 +112,7 @@ userBtn.addEventListener("click", () => {
 
               priceDiv.innerText = `Total Price: ${totalPrice}`;
             }
+            confirmed = true;
           });
         }
       });
@@ -116,7 +131,6 @@ adminBtn.addEventListener("click", () => {
 function render(user) {
   if (user === "user") {
     container.innerHTML = `<section class="boards">
-            <div class="lotto-heading">Lotto Simulator</div>
             <div class="boards-heading">Select your boards.</div>
             <div class="boards-selector">
                 <input type="text" id="input-number" placeholder="Enter board number">
@@ -130,10 +144,8 @@ function render(user) {
           
             <div class="price">Total Price: </price>
         </section>`;
-    container.appendChild(nav);
   } else if (user === "admin") {
     container.innerHTML = `     <section class="lotto-draw">
-          <div class="lotto-heading">Lotto Simulator</div>
           <div class="lotto-draw-heading">Run Lotto Draw</div>
           <div class="lotto-draw-btns">
               <button class="draw-btn">Draw</button>
@@ -143,13 +155,14 @@ function render(user) {
           <div class="lotto-draw-results">
           </div>
       </section>`;
-    container.appendChild(nav);
   }
 }
 
 function login(user) {
   if (user === "user") {
-    container.innerHTML = `<form>
+    container.innerHTML = `
+  
+    <form>
     <label for="username">Username: 
       <input type="text" id="username" />
     </label>
@@ -159,7 +172,9 @@ function login(user) {
     <input type="submit" id="user-login-submit" />
   </form>`;
   } else if (user === "admin") {
-    container.innerHTML = `<form>
+    container.innerHTML = `
+   
+    <form>
     <label for="adminname">Admin name: 
       <input type="text" id="adminname" />
     </label>
