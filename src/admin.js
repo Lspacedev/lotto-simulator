@@ -4,6 +4,8 @@ export function admin() {
   let matchedBoards = [];
 
   function draw(tickets, lotto_plus1, lotto_plus2) {
+    //save tickets
+    localStorage.setItem("tickets", JSON.stringify(tickets));
     //random number generator
     function drawNumbers(min, max) {
       let arr = [];
@@ -90,7 +92,7 @@ export function admin() {
       tickets.map((ticket) => {
         const ticketId = ticket.ticketId;
         const boards = ticket.boards;
-        console.log(ticket);
+
         boards.map((board) => {
           const boardId = board.boardId;
 
@@ -106,8 +108,6 @@ export function admin() {
             }
           });
           results.push(matchesObj);
-          console.log(winningResults1);
-          console.log(numbers);
         });
       });
       matchedBoards = results.filter((obj) => obj.count >= 1);
@@ -124,6 +124,7 @@ export function admin() {
       } else {
         alert(`${lottoName} Results: You lost`);
       }
+      localStorage.setItem("winners", JSON.stringify(matchedBoards));
     }
     function updateWinningTickets(arr) {
       //append to admin win aside

@@ -49,7 +49,9 @@ If you’re interested in play additional lotteries, you can buy lottery tickets
 
 //create array for storing ticket object
 let tickets = [];
-let winningTickets = [];
+const storedTicketsData = JSON.parse(localStorage.getItem("tickets"));
+const storedWinningData = JSON.parse(localStorage.getItem("winners"));
+
 let lotto_plus1 = false;
 let lotto_plus2 = false;
 userBtn.addEventListener("click", () => {
@@ -58,11 +60,21 @@ userBtn.addEventListener("click", () => {
   const userSubmitBtn = document.querySelector("#user-login-submit");
   userSubmitBtn.addEventListener("click", () => {
     render("user");
+
+    if (storedTicketsData.length > 0) {
+      user().generateTickets(storedTicketsData);
+    }
+
     //check if user won
     const winningsAside = document.querySelector(".winnings-aside");
 
-    if (winningTickets.length > 0) {
-      winningsAside.innerText = "You have winning tickets.";
+    if (storedWinningData.length > 0) {
+      let message = `You have winning tickets. `;
+      storedWinningData.forEach((ticket) => {
+        const ticketId = ticket.ticketId;
+        message += `ticketId ${ticketId} `;
+      });
+      winningsAside.innerText = message;
     } else {
       winningsAside.innerText = "You currently have  winning tickets.";
     }
@@ -194,7 +206,7 @@ function render(user) {
     container.innerHTML = `     
     <section class="lotto-draw">
         <aside>
-          <h4>Winning Tickets</h4>
+          <h4>Winning Tickets/Boards</h4>
           <div class="admin-win-aside"></div>
         </aside>
       <div class="admin-main">

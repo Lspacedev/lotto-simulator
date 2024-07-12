@@ -91,7 +91,7 @@ export function user() {
         board.classList.add("board");
 
         board.setAttribute("id", `${boardId}`);
-        console.log(ticketId, "dd");
+
         board.setAttribute("data-cell-index", `${ticketId}`);
 
         for (let i = 0; i < 52; i++) {
@@ -199,7 +199,7 @@ export function user() {
                 if (board.numbers.indexOf(number) === -1) {
                   //add selected class to boardBlock
                   boardBlock.classList.add("selected");
-                  console.log(boardBlock);
+
                   return board.numbers.push(number);
                 }
               } else {
@@ -210,7 +210,6 @@ export function user() {
             return ticket;
           }
         });
-        console.dir(boardBlocks, "jd");
       });
     });
   }
