@@ -49,8 +49,8 @@ If you’re interested in play additional lotteries, you can buy lottery tickets
 
 //create array for storing ticket object
 let tickets = [];
-const storedTicketsData = JSON.parse(localStorage.getItem("tickets"));
-const storedWinningData = JSON.parse(localStorage.getItem("winners"));
+const storedTicketsData = JSON.parse(localStorage.getItem("tickets") || "[]");
+const storedWinningData = JSON.parse(localStorage.getItem("winners" || "[]"));
 
 let lotto_plus1 = false;
 let lotto_plus2 = false;
