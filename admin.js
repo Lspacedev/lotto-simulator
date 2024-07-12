@@ -110,7 +110,7 @@ export function admin() {
           results.push(matchesObj);
         });
       });
-      matchedBoards = results.filter((obj) => obj.count >= 1);
+      matchedBoards = results.filter((obj) => obj.count >= 3);
       if (matchedBoards.length > 0) {
         const adminWinAside = document.querySelector(".admin-win-aside");
 
