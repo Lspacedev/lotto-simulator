@@ -16,7 +16,7 @@ const container = document.querySelector(".container");
 const body = document.querySelector("body");
 const lottoHeading = document.createElement("div");
 lottoHeading.classList.add("lotto-heading");
-lottoHeading.innerHTML = `<img src="./game_lotto.png"></img>`;
+lottoHeading.innerHTML = `<img src="./images/game_lotto.png"></img>`;
 
 const navBtns = document.createElement("div");
 navBtns.classList.add("nav-btns");
@@ -41,9 +41,9 @@ If you’re interested in play additional lotteries, you can buy lottery tickets
       </div>
  
       <div class="lotto-types">
-        <div class="lotto-icon"><img src="./game_lotto.png"></img></div>
-        <div class="lotto-plus1-icon"><img src="./game_lottoplus1.png"></img></div>
-        <div class="lotto-plus2-icon"><img src="./game_lottoplus2.png"></img></div>
+        <div class="lotto-icon"><img src="./images/game_lotto.png"></img></div>
+        <div class="lotto-plus1-icon"><img src="./images/game_lottoplus1.png"></img></div>
+        <div class="lotto-plus2-icon"><img src="./images/game_lottoplus2.png"></img></div>
       </div>
     </div>`;
 
