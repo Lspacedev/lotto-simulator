@@ -61,24 +61,25 @@ userBtn.addEventListener("click", () => {
   userSubmitBtn.addEventListener("click", () => {
     render("user");
 
-    if (storedTicketsData.length > 0) {
-      user().generateTickets(storedTicketsData);
+    if (storedTicketsData) {
+      if (storedTicketsData.length > 0) {
+        user().generateTickets(storedTicketsData);
+      }
     }
-
     //check if user won
     const winningsAside = document.querySelector(".winnings-aside");
-
-    if (storedWinningData.length > 0) {
-      let message = `You have winning tickets. `;
-      storedWinningData.forEach((ticket) => {
-        const ticketId = ticket.ticketId;
-        message += `ticketId ${ticketId} `;
-      });
-      winningsAside.innerText = message;
-    } else {
-      winningsAside.innerText = "You currently have  winning tickets.";
+    if (storedWinningData) {
+      if (storedWinningData.length > 0) {
+        let message = `You have winning tickets. `;
+        storedWinningData.forEach((ticket) => {
+          const ticketId = ticket.ticketId;
+          message += `ticketId ${ticketId} `;
+        });
+        winningsAside.innerText = message;
+      } else {
+        winningsAside.innerText = "You currently have  winning tickets.";
+      }
     }
-
     //get user input
     const input = document.querySelector("#input-number");
     const submit = document.querySelector("#input-submit");
